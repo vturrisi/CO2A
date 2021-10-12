@@ -1,0 +1,117 @@
+# hmdb <-> ucf, ucf <-> olympics (only path changes/name)
+python3 ../main.py \
+    --source_dataset /data/datasets/hmdb_ucf/hmdb/train \
+    --target_dataset /data/datasets/hmdb_ucf/ucf/train \
+    --val_dataset /data/datasets/hmdb_ucf/ucf/test \
+    --name hmdb-ucf \
+    --project testing-da \
+    --epochs 20 \
+    --bottleneck_size 256 \
+    --optimizer sgd \
+    --lr 0.01 \
+    --weight_decay 1e-9 \
+    --scheduler cosine \
+    --n_frames 16 \
+    --n_clips 4 \
+    --frame_size 224 \
+    --ce_loss_weight 1 \
+    --ce_loss_target_weight 0 \
+    --nce_loss_target_aug_based_weight 0.2 \
+    --nce_loss_target_clip_aug_based_weight 0.2 \
+    --target_2_augs \
+    --target_augmentations color spatial horizontal \
+    --nce_loss_source_label_based_weight 1 \
+    --nce_loss_inter_domain_weight 2 \
+    --consistency_loss_weight 0.02 \
+    --consistency_threshold 0.5 \
+    --temperature 0.5 \
+    --pretrained \
+    --selection_factor 4 \
+    --aggregation mlp_weights \
+    --batch_size 4 \
+    --num_workers 8 \
+    --gpus 0 1 2 3 \
+    --distributed_backend ddp \
+    --wandb \
+    --layers 2 \
+    --layers_ca 1
+
+# kinetics -> nec-drone
+python3 ../main.py \
+    --source_dataset /data/datasets/kinetics_datasets/kinetics_nec_balanced \
+    --target_dataset /data/datasets/nec-drone/train_balanced \
+    --val_dataset /data/datasets/nec-drone/test \
+    --name nec-drone \
+    --project final-ablation-da \
+    --epochs 50 \
+    --bottleneck_size 256 \
+    --optimizer sgd \
+    --lr 0.02 \
+    --weight_decay 1e-9 \
+    --scheduler cosine \
+    --n_frames 16 \
+    --n_clips 4 \
+    --frame_size 224 \
+    --ce_loss_weight 1 \
+    --ce_loss_target_weight 0 \
+    --nce_loss_target_aug_based_weight 1.2 \
+    --nce_loss_target_clip_aug_based_weight 1.2 \
+    --target_2_augs \
+    --target_augmentations spatial color horizontal \
+    --nce_loss_source_label_based_weight 1 \
+    --nce_loss_target_label_based_weight 0 \
+    --nce_loss_inter_domain_weight 0.2 \
+    --consistency_loss_weight 0.01 \
+    --consistency_threshold 0.5 \
+    --complete_nce_weight 0 \
+    --temperature 0.1 \
+    --video_dropout 0 \
+    --pretrained \
+    --selection_factor 4 \
+    --aggregation mlp_weights \
+    --batch_size 4 \
+    --num_workers 8 \
+    --gpus 0 1 2 3 \
+    --distributed_backend ddp \
+    --wandb \
+    --layers 2 \
+    --layers_ca 1
+
+# mixamo -> kinetics
+python3 ../main.py \
+    --source_dataset /data/datasets/mixamo_datasets/mixamo14_split/train \
+    --target_dataset /data/datasets/kinetics_datasets/kinetics14/train \
+    --val_dataset /data/datasets/kinetics_datasets/kinetics14/test \
+    --name mixamo-kinetics \
+    --project domain_adaptation \
+    --epochs 20 \
+    --bottleneck_size 256 \
+    --optimizer sgd \
+    --lr 0.01 \
+    --weight_decay 1e-9 \
+    --scheduler cosine \
+    --n_frames 16 \
+    --n_clips 4 \
+    --frame_size 224 \
+    --ce_loss_weight 1 \
+    --ce_loss_target_weight 0 \
+    --nce_loss_target_aug_based_weight 0.2 \
+    --nce_loss_target_clip_aug_based_weight 0.2 \
+    --target_2_augs \
+    --source_augmentations color spatial horizontal temporal \
+    --target_augmentations color spatial horizontal temporal \
+    --nce_loss_source_label_based_weight 1 \
+    --nce_loss_inter_domain_weight 2 \
+    --consistency_loss_weight 0.02 \
+    --consistency_threshold 0.5 \
+    --temperature 0.5 \
+    --mixamo14_pretrained \
+    --selection_factor 6 \
+    --aggregation mlp_weights \
+    --batch_size 4 \
+    --num_workers 8 \
+    --gpus 0 1 2 3 \
+    --distributed_backend ddp \
+    --wandb \
+    --layers 2 \
+    --layers_ca 1

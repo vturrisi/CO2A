@@ -1,0 +1,8 @@
+numpy
+torch==1.7.0
+torchvision==0.8.1
+pytorch-lightning==1.0.8
+pytorch-lightning-bolts==0.2.5
+Pillow
+tqdm
+wandb
