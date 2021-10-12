@@ -1,0 +1,1 @@
+Place holder for the official implementation for CO2A from Turrisi da Costa, V. G.; Zara, G.; Rota, P.; Santos, T. O.; Sebe, N.; Murino, V.; Ricci, E. - "Dual Head Contrastive Domain Adaptation for Video Action Recognition" in Proc. of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV), 2022.
