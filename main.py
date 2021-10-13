@@ -10,6 +10,9 @@ from src.dataloader import prepare_data, prepare_data_source_only
 from src.i3d import InceptionI3d, load_i3d_imagenet_pretrained
 from src.utils import ConfusionMatrix, EpochCheckpointer, PseudoLabelDistribution
 from src.video_model import VideoModel
+from pytorch_lightning.plugins import DDPPlugin
+
+torch.backends.cudnn.benchmark = True
 
 
 def parse_args():
@@ -158,7 +161,6 @@ def main():
             n_clips=args.n_clips,
             frame_size=args.frame_size,
             augmentations=args.source_augmentations,
-            augmentations_params=args.source_augmentations_params,
             batch_size=args.batch_size,
             num_workers=args.num_workers,
         )
@@ -172,8 +174,6 @@ def main():
             frame_size=args.frame_size,
             source_augmentations=args.source_augmentations,
             target_augmentations=args.target_augmentations,
-            source_augmentations_params=args.source_augmentations_params,
-            target_augmentations_params=args.target_augmentations_params,
             target_2_augs=args.target_2_augs,
             batch_size=args.batch_size,
             num_workers=args.num_workers,
@@ -206,6 +206,7 @@ def main():
         callbacks=callbacks,
         num_sanity_val_steps=0,
     )
+
     trainer.fit(model, source_loader, val_loader)
 
 
