@@ -1,8 +1,10 @@
 numpy
 torch==1.8.0
-torchvision==0.8.1
+torchvision==0.9.0
 pytorch-lightning==1.2.8
 pytorch-lightning-bolts==0.2.5
 Pillow
 tqdm
 wandb
+seaborn
+matplotlib
