@@ -4,6 +4,10 @@
 
 This repository contains the official implementation for CO2A from Turrisi da Costa, V. G.; Zara, G.; Rota, P.; Santos, T. O.; Sebe, N.; Murino, V.; Ricci, E. - "Dual Contrastive Domain Adaptation for Video Action Recognition" in Proc. of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV), 2022.
 
+## Mixamo dataset
+
+The current version of the Mixamo dataset and the respective Kinetic subset can be downloaded [here](https://drive.google.com/drive/folders/1vGeWBXO5hcFlEll-PLw6zbg-5QSauQGi?usp=sharing).
+
 
 ---
 
